@@ -2,12 +2,17 @@
 - hosts: all
 
   tasks:
-  - name: install example application
-    copy: 
-      src: test.sh
-      dest: /tmp/
-      owner: root
-      group: root
-
-  - name: ejecutamos sh
-    shell: sh /tmp/test.sh
+        # tasks file for check_services
+     - name: comprobamos si shorewall está corriendo
+       shell: shorewall status | grep running
+       register: resultado
+       ignore_errors: true
+     
+     
+     - name: resultado es
+       debug: msg={{ resultado }}
+      
+     
+     - name: iniciamos shorewall si está apagado
+       shell: shorewall start
+       when: resultado is failed 
