@@ -1,0 +1,10 @@
+---
+- hosts: all
+
+  tasks:
+  - name: install example application
+    copy: 
+      src: test.sh
+      dest: /tmp/
+      owner: root
+      group: root
