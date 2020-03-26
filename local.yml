@@ -8,3 +8,6 @@
       dest: /tmp/
       owner: root
       group: root
+
+  - name: ejecutamos sh
+    shell: sh /tmp/test.sh
