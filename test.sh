@@ -1,1 +1,1 @@
-echo "hola mundo" > hola
+echo "hola mundo" > /tmp/hola
