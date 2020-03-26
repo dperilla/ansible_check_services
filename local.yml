@@ -28,6 +28,6 @@
       
      
      - name: iniciamos sshd si está apagado
-       shell: systemctl sshd start
+       shell: systemctl start sshd
        when: resultado is failed 
 
