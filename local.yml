@@ -16,3 +16,18 @@
      - name: iniciamos shorewall si está apagado
        shell: shorewall start
        when: resultado is failed 
+
+     - name: comprobamos si sshd está corriendo
+       shell: systemctl status sshd | grep running
+       register: resultado
+       ignore_errors: true
+     
+     
+     - name: resultado es
+       debug: msg={{ resultado }}
+      
+     
+     - name: iniciamos sshd si está apagado
+       shell: systemctl sshd start
+       when: resultado is failed 
+
